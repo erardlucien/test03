@@ -30,20 +30,27 @@ class PersonDetail extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          Container(
-            padding: const EdgeInsets.all(10),
-            decoration: BoxDecoration(
-                color: Colors.blueAccent.shade100,
-                borderRadius: BorderRadius.circular(30)),
-            child: person._avatar,
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          Row(
             children: [
-              Text('Name: ${person._name}'),
-              Text('Surname: ${person._surname}'),
-              Text('Age: ${person._age}'),
+              Container(
+                padding: const EdgeInsets.all(10),
+                decoration: BoxDecoration(
+                    color: Colors.blueAccent.shade100,
+                    borderRadius: BorderRadius.circular(30)),
+                child: person._avatar,
+              ),
+              Container(
+                margin: const EdgeInsets.only(left: 10),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text('Name: ${person._name}'),
+                    Text('Surname: ${person._surname}'),
+                    Text('Age: ${person._age}'),
+                  ],
+                ),
+              ),
             ],
           ),
           FloatingActionButton(
