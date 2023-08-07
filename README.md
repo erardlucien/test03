@@ -1,8 +1,10 @@
 # test03_1
 
 This code is used to remove and add person information from a list of person.
+
  - Press + to add the person information.
  - Press x to remove the person information.
+
 Dart is the language is used for this code.
 Everything you need is inside the lib directory.
 You can not add more than 8 elements.

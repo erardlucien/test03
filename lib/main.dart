@@ -99,7 +99,18 @@ class _ListPersonDetailState extends State<ListPersonDetail> {
   int _counter = 0;
   int _deletedCounter = 0;
 
-  void _removePerson(int index) {
+  void msgState() {
+    setState(() {
+      msg;
+    });
+  }
+
+  Future<Set<Text>> delay() async {
+    return await Future.delayed(
+        const Duration(seconds: 2), () => {msg = const Text('')});
+  }
+
+  void _removePerson(int index) async {
     setState(() {
       Person person = widget.list[index];
       widget.list.removeAt(index);
@@ -110,13 +121,21 @@ class _ListPersonDetailState extends State<ListPersonDetail> {
         style: const TextStyle(fontSize: 15, color: Colors.white),
       );
     });
+    await delay();
+    msgState();
   }
 
-  void _addPerson() {
+  void _addPerson() async {
     setState(() {
       if (_deletedCounter == PersonList.persons.length) {
         _counter = 0;
         _deletedCounter = 0;
+      }
+
+      if(_deletedCounter > -1) {
+        msg = const Text(
+            'deletedCounter must be 8,\nif you want to add a element!',
+            style: TextStyle(fontSize: 15, color: Colors.white));
       }
 
       if (_counter >= 0 && _counter < PersonList.persons.length) {
@@ -128,6 +147,8 @@ class _ListPersonDetailState extends State<ListPersonDetail> {
         ++_counter;
       }
     });
+    await delay();
+    msgState();
   }
 
   @override
